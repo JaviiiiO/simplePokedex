@@ -1,5 +1,6 @@
 let pagina = 0;
 const btnSiguiente = document.getElementById('loadMore');
+const btnAtr = document.getElementById('loadLess');
 const cargando = document.getElementById('cargando');
 const cards = document.getElementById('container');
 const nav = document.querySelector('.menuNav');
@@ -29,6 +30,18 @@ btnSiguiente.addEventListener('click', async () => {
     cargando.style.display = 'block';
     cards.style.display = 'none';
     await cargarPokemon();
+});
+
+btnAtr.addEventListener('click', async () => {
+    if(pagina > 0){
+    pagina -= 12;
+    cargando.style.display = 'block';
+    cards.style.display = 'none';
+    await cargarPokemon();
+    }
+    else{
+        alert('Estás en el inicio de la pokédex')
+    }
 });
 
 const cargarPokemon = async () => {
